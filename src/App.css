@@ -1,0 +1,353 @@
+/* ── Color Palette ────────────────────────────────────────────────────────────*/
+:root {
+  --bg: #0b0c10;
+  --panel: #13151a;
+  --card: #1a1d25;
+  --card-hover: #21242f;
+  --accent: #00e676;
+  --accent-dim: #00a152;
+  --red: #ff1744;
+  --text: #e8eaf6;
+  --text-dim: #6b6f7e;
+  --border: #252830;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────────*/
+.header {
+  background-color: var(--panel);
+  height: 58px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-dot {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.reload-btn {
+  width: 120px;
+  height: 32px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reload-btn:hover:not(:disabled) {
+  background-color: var(--card-hover);
+}
+
+.reload-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Container ────────────────────────────────────────────────────────────────*/
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Games Panel ──────────────────────────────────────────────────────────────*/
+.games-panel {
+  width: 360px;
+  background-color: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.panel-header {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+}
+
+.panel-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.games-count {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--border);
+}
+
+.games-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.games-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.games-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.games-list::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+.game-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-card:hover {
+  background-color: var(--card-hover);
+  border-color: var(--accent-dim);
+}
+
+.game-card.selected {
+  background-color: var(--card-hover);
+  border-color: var(--accent);
+}
+
+.game-card-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.game-dot {
+  font-size: 7px;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.game-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* ── Players Panel ────────────────────────────────────────────────────────────*/
+.players-panel {
+  flex: 1;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.players-panel .panel-header {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.players-panel .panel-title {
+  color: var(--text-dim);
+}
+
+.players-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.players-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.players-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.players-list::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding-top: 80px;
+}
+
+.player-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s;
+}
+
+.player-card:hover {
+  background-color: var(--card-hover);
+  border-color: var(--accent-dim);
+}
+
+.player-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.player-url {
+  font-size: 9px;
+  color: var(--text-dim);
+  font-weight: 600;
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.player-btn {
+  width: 90px;
+  height: 30px;
+  background-color: var(--accent-dim);
+  border: none;
+  border-radius: 6px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 12px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.player-btn:hover {
+  background-color: var(--accent);
+}
+
+/* ── Status Bar ───────────────────────────────────────────────────────────────*/
+.status-bar {
+  background-color: var(--panel);
+  height: 32px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.status-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.spinner {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────────*/
+@media (max-width: 1024px) {
+  .games-panel {
+    width: 280px;
+  }
+
+  .game-title {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .games-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 40%;
+  }
+
+  .players-panel {
+    max-height: 60%;
+  }
+}
