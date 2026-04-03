@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const API_URL = "https://futstream-server.onrender.com/";
+const API_URL = "https://futstream-server.onrender.com";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -23,9 +23,11 @@ function App() {
     try {
       const res = await fetch(`${API_URL}/games`);
       const data = await res.json();
-      setGames(data);
+
+      // ✅ CORRETO
+      setGames(data.games || []);
     } catch (err) {
-      console.error(err);
+      console.error("Erro ao carregar jogos:", err);
     } finally {
       setLoadingGames(false);
     }
@@ -38,12 +40,14 @@ function App() {
 
     try {
       const res = await fetch(
-        `${API_URL}/players?game_url=${encodeURIComponent(game.url)}`
+        `${API_URL}/players?url=${encodeURIComponent(game.url)}`
       );
       const data = await res.json();
-      setPlayers(data);
+
+      // ✅ CORRETO
+      setPlayers(data.players || []);
     } catch (err) {
-      console.error(err);
+      console.error("Erro ao carregar players:", err);
     } finally {
       setLoadingPlayers(false);
     }
@@ -54,7 +58,7 @@ function App() {
       <header className="header">
         <h1>FUTSTREAM</h1>
         <button onClick={loadGames} disabled={loadingGames}>
-          Recarregar
+          {loadingGames ? "Carregando..." : "Recarregar"}
         </button>
       </header>
 
@@ -91,7 +95,9 @@ function App() {
 
           {players.map((p) => (
             <div key={p.url} className="player">
-              <span>{p.label}</span>
+              {/* ✅ CORREÇÃO AQUI */}
+              <span>{p.name}</span>
+
               <button onClick={() => window.open(p.url, "_blank")}>
                 Abrir
               </button>
