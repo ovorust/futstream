@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const API_URL = "https://futstream-server.onrender.com/api";
+const API_URL = "https://futstream-server.onrender.com/";
 
 function App() {
   const [games, setGames] = useState([]);
