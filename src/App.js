@@ -12,7 +12,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Iniciando...");
   const [spinFrame, setSpinFrame] = useState(0);
-  const spinnerRef = useRef(null);
 
   useEffect(() => {
     loadGames();
