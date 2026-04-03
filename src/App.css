@@ -145,6 +145,24 @@ body {
   padding: 8px;
 }
 
+/* Search input for games */
+.games-search {
+  width: 100%;
+  height: 36px;
+  padding: 8px 12px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.games-search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.06);
+}
+
 .games-list::-webkit-scrollbar {
   width: 8px;
 }
